@@ -49,6 +49,14 @@ public class CountryServiceImpl implements ICountryService {
         return this.countryRepository.save(countryEntity);
     }
 
+    @Override
+    public void deleteCountry(Long id) {
+        this.countryRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Country doesn't exist"));
+
+        this.countryRepository.deleteById(id);
+    }
+
 }
 
 

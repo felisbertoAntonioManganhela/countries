@@ -9,4 +9,5 @@ public interface ICountryService {
     CountryEntity createCountry(CountryDTO country);
     List<CountryEntity> getCountries();
     CountryEntity updateCountry(Long id, CountryDTO country);
+    void deleteCountry(Long id);
 }

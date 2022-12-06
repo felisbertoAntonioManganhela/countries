@@ -55,9 +55,7 @@ PUT http://localhost:8080/v1/country/{id}
 ```
 
 ### Delete
-```
+DELETE http://localhost:8080/v1/country/{id}
 
-```
-
-### List
+### List All
 GET http://localhost:8080/v1/country
