@@ -7,6 +7,10 @@ import com.soft2ibi.countries.repository.CountryRepository;
 import com.soft2ibi.countries.service.ICountryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,8 +35,13 @@ public class CountryServiceImpl implements ICountryService {
     }
 
     @Override
-    public List<CountryEntity> getCountries() {
-        return (List<CountryEntity>)this.countryRepository.findAll();
+    public List<CountryEntity> getCountries(int page,int size, String sort) {
+        Sort sortPage =  Sort.by(sort).ascending();
+        Pageable pageable = PageRequest.of(page, size, sortPage);
+
+        Page<CountryEntity> countries = this.countryRepository.findAll(pageable);
+
+        return  countries.getContent();
     }
 
     @Override

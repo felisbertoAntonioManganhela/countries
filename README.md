@@ -57,5 +57,5 @@ PUT http://localhost:8080/v1/country/{id}
 ### Delete
 DELETE http://localhost:8080/v1/country/{id}
 
-### List All
-GET http://localhost:8080/v1/country
+### List All and Sort
+GET http://localhost:8080/v1/country?sort=region

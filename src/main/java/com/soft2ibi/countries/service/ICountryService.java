@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ICountryService {
     CountryEntity createCountry(CountryDTO country);
-    List<CountryEntity> getCountries();
+    List<CountryEntity> getCountries(int page,int size, String sort);
     CountryEntity updateCountry(Long id, CountryDTO country);
     void deleteCountry(Long id);
 }
