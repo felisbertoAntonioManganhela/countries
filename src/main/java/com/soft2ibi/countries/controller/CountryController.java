@@ -38,5 +38,13 @@ public class CountryController {
         return new ResponseEntity(countriesDTO, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CountryDTO> updateCountry(@PathVariable(value = "id") Long id,
+                                                    @RequestBody CountryDTO country) {
+        CountryEntity countryEntity = this.countryService.updateCountry(id, country);
+        CountryDTO countryDTO = (CountryDTO)this.modelMapper.map(countryEntity, CountryDTO.class);
+        return new ResponseEntity<CountryDTO>(countryDTO, HttpStatus.OK);
+    }
+
 
 }

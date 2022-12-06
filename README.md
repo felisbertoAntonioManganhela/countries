@@ -43,8 +43,15 @@ POST http://localhost:8080/v1/country
 ```
 
 ### Update
+PUT http://localhost:8080/v1/country/{id}
 ```
-
+{
+    "name" : "Brazil",
+    "capital" : "Brasilia",
+    "region" : "South America",
+    "subregion" : "South",
+    "area": 200.0
+}
 ```
 
 ### Delete

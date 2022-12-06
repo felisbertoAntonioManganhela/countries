@@ -35,6 +35,20 @@ public class CountryServiceImpl implements ICountryService {
         return (List<CountryEntity>)this.countryRepository.findAll();
     }
 
+    @Override
+    public CountryEntity updateCountry(Long id, CountryDTO country)  {
+        CountryEntity countryEntity = this.countryRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Country doesn't exist"));
+
+        countryEntity.setName(country.getName());
+        countryEntity.setCapital(country.getCapital());
+        countryEntity.setRegion(country.getRegion());
+        countryEntity.setSubregion(country.getSubregion());
+        countryEntity.setArea(country.getArea());
+
+        return this.countryRepository.save(countryEntity);
+    }
+
 }
 
 
