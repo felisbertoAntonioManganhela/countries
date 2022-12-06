@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(path = {"/v1/country"}, produces = {"application/json"})
@@ -26,6 +28,14 @@ public class CountryController {
         CountryEntity countryEntity = this.countryService.createCountry(country);
         CountryDTO countryDTO = (CountryDTO)this.modelMapper.map(countryEntity, CountryDTO.class);
         return new ResponseEntity<CountryDTO>(countryDTO, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CountryDTO>> getCountries() {
+        List<CountryEntity> countries = this.countryService.getCountries();
+        List<CountryDTO> countriesDTO = (List<CountryDTO>)countries.stream().map(country -> (CountryDTO)this.modelMapper.map(country, CountryDTO.class)).collect(Collectors.toList());
+
+        return new ResponseEntity(countriesDTO, HttpStatus.OK);
     }
 
 

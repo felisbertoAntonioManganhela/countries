@@ -9,6 +9,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CountryServiceImpl implements ICountryService {
     @Autowired
@@ -26,6 +28,11 @@ public class CountryServiceImpl implements ICountryService {
 
         CountryEntity countryEntity = modelMapper.map(country, CountryEntity.class);
         return this.countryRepository.save(countryEntity);
+    }
+
+    @Override
+    public List<CountryEntity> getCountries() {
+        return (List<CountryEntity>)this.countryRepository.findAll();
     }
 
 }
