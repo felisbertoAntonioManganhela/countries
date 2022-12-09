@@ -11,9 +11,10 @@
 * Java 8
 * Spring boot 2.7.6
 * Mysql 
+* AWS
 
-## Installing and Run
-GO to "application.properties" configuration file
+## Installing and Run Local
+GO to "application-dev.properties" configuration file
 
 1 - update this line to create tables automatically  
 spring.jpa.hibernate.ddl-auto=update
@@ -23,10 +24,12 @@ spring.datasource.username=root
 spring.datasource.password=
 
 3 - Create database  
-create database countries_db
+create database countries_db;
 
-4 - Run on command line   
-mvn spring-boot:run
+4 - Remove AWS Dependencies and SecretManagerConfig
+
+5 - Run - command line   
+mvn spring-boot:run -Drun.profiles=dev
 
 ## Endpoints
 

@@ -3,10 +3,10 @@ package com.soft2ibi.countries;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class CountriesApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 
